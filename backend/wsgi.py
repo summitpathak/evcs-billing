@@ -6,7 +6,7 @@ import os
 
 # Add your project directory to the sys.path
 # IMPORTANT: Replace 'YOUR_USERNAME' with your actual PythonAnywhere username
-project_home = '/home/YOUR_USERNAME/ev-charging-backend'
+project_home = '/home/summit/backend'
 if project_home not in sys.path:
     sys.path.insert(0, project_home)
 

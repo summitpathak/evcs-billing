@@ -1,12 +1,5 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "app/layout.tsx",
-            "use": "@vercel/next"
-        }
-    ],
     "env": {
-        "NEXT_PUBLIC_API_URL": "https://your-backend-url.railway.app"
+        "NEXT_PUBLIC_API_URL": "https://YOUR_USERNAME.pythonanywhere.com/api"
     }
 }

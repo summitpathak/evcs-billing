@@ -1,6 +1,6 @@
 import { getToken } from './auth';
 
-const API_BASE_URL = 'http://localhost:5001/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
 
 const getHeaders = () => {
     const token = getToken();
