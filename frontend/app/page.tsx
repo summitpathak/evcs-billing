@@ -483,7 +483,11 @@ export default function Home() {
                         step="0.01"
                         className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                         value={endForm.unit_kwh}
-                        onChange={e => setEndForm({ ...endForm, unit_kwh: e.target.value })}
+                        onChange={e => {
+                          const energy = e.target.value;
+                          const calculatedAmount = energy ? (parseFloat(energy) * 15).toFixed(2) : '';
+                          setEndForm({ ...endForm, unit_kwh: energy, price_paid: calculatedAmount });
+                        }}
                         placeholder="e.g., 25.5"
                       />
                     </div>
@@ -491,16 +495,20 @@ export default function Home() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-gray-700 mb-1">Amount (Rs) *</label>
+                      <label className="block text-sm font-bold text-gray-700 mb-1">
+                        Amount (Rs) *
+                        <span className="text-xs font-normal text-gray-500 ml-2">(Auto-calculated, editable)</span>
+                      </label>
                       <input
                         type="number"
                         required
                         step="0.01"
-                        className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                        className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-200 bg-yellow-50"
                         value={endForm.price_paid}
                         onChange={e => setEndForm({ ...endForm, price_paid: e.target.value })}
-                        placeholder="e.g., 500"
+                        placeholder="Auto-calculated from Energy × 15"
                       />
+                      <p className="text-xs text-gray-500 mt-1">Formula: Energy (kWh) × Rs. 15/kWh</p>
                     </div>
                     <div>
                       <label className="block text-sm font-bold text-gray-700 mb-1">Payment *</label>
